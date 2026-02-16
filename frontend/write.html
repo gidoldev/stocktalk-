@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>StockTalk | 글쓰기</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="write-body">
+    <!-- 중앙 정렬 래퍼 -->
+    <div class="page-center">
+
+        <div class="write-container">
+            <div class="write-header">
+                <h2>
+                    <i class="fas fa-pen-nib"></i>
+                    글쓰기
+                </h2>
+                <span id="user-display" class="write-user"></span>
+            </div>
+
+            <form class="write-form" onsubmit="savePost(event)">
+                <input
+                    type="text"
+                    id="post-title"
+                    placeholder="제목"
+                    maxlength="100"
+                    required
+                >
+
+                <textarea
+                    id="post-content"
+                    placeholder="내용을 입력하세요"
+                    required
+                ></textarea>
+
+                <div class="btn-group">
+                    <button
+                        type="button"
+                        class="back-btn cancel-btn"
+                        onclick="history.back()"
+                    >
+                        취소
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                    >
+                        게시하기
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- 공통 -->
+    <script src="script-api.js"></script>
+    <!-- 글쓰기 전용 -->
+    <script src="write-api.js"></script>
+</body>
+</html>

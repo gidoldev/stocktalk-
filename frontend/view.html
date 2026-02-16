@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockTalk | 게시글 보기</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1 onclick="location.href='main.html'" style="cursor:pointer;">StockTalk</h1>
+            <button id="loginBtn">로그인</button>
+        </div>
+    </header>
+
+    <main class="center-layout-container">
+
+        <div class="glass-card content-box">
+
+            <div class="view-header">
+                <h2 id="view-title">내용을 불러오는 중입니다...</h2>
+
+                <div class="view-meta">
+                    <span id="view-author"></span>
+                    <span id="view-date"></span>
+                </div>
+            </div>
+
+            <div class="view-body" id="view-content">
+                내용을 불러오는 중입니다...
+            </div>
+
+            <div class="view-actions">
+
+                <button id="like-btn"
+                        class="like-btn-large"
+                        onclick="handleLike()">
+                    <i class="fas fa-heart"></i>
+                    <span id="like-count">0</span>
+                </button>
+
+                <button class="back-btn"
+                        onclick="location.href='board.html'">
+                    목록으로
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <<script src="script-api.js"></script>
+    <script src="view-api.js"></script>
+</body>
+</html>

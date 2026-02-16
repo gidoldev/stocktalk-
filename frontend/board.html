@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockTalk | 커뮤니티</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body style="overflow: hidden;"> 
+
+<header>
+    <div class="header-content">
+        <h1 onclick="location.href='main.html'" style="cursor:pointer;">StockTalk</h1>
+        <div id="authMenu">
+            <button id="loginBtn">로그인</button>
+        </div>
+    </div>
+</header>
+
+<div class="community-wrapper">
+    
+    <!-- 좌측: 채팅 섹션 -->
+    <div class="chat-section">
+        <div class="chat-header">
+            <span><i class="fas fa-hashtag"></i> 자유-토론</span>
+        </div>
+        
+        <div id="chat-messages" class="chat-messages">
+            <!-- 채팅 메시지가 여기에 로드됨 -->
+        </div>
+        
+        <form class="chat-input-area" id="chat-form">
+            <input 
+                type="text" 
+                id="chat-input" 
+                placeholder="메시지를 입력하세요..." 
+                autocomplete="off">
+            <button type="submit" class="btn-primary" title="전송">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+
+    <!-- 우측: 사이드바 게시판 -->
+    <div class="board-sidebar">
+        <div class="sidebar-header">
+            <h3>📊 분석 게시판</h3>
+            <button class="btn-primary write-small-btn" 
+                    onclick="location.href='write.html'"
+                    title="새 글 작성">
+                <i class="fas fa-edit"></i>
+            </button>
+        </div>
+        
+        <div id="sidebar-list" class="sidebar-list">
+            <!-- 게시글 목록이 여기에 로드됨 -->
+        </div>
+    </div>
+
+</div>
+
+<!-- 스크립트 로드 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="script-api.js"></script>
+<script src="board-api.js"></script>
+
+</body>
+</html>

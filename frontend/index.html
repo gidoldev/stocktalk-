@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>StockTalk! | 한국 주식 커뮤니티</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        if (!sessionStorage.getItem('policy_agreed')) {
+            location.href = 'po.html?from=index.html';
+        }
+    </script>
+    <style>
+        /* 하단 링크들의 색상을 직접 제어합니다 */
+        .landing-footer-links a {
+            color: var(--primary-blue); /* 로그인, 이용약관은 푸른색 */
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .landing-footer-links a:hover {
+            color: var(--deep-ocean);
+            text-decoration: underline;
+        }
+        /* 계정 삭제 버튼만 빨간색으로 강조 */
+        .landing-footer-links .delete-link {
+            color: #ef4444 !important; /* 강렬한 레드 */
+            opacity: 0.8;
+        }
+        .landing-footer-links .delete-link:hover {
+            color: #dc2626 !important;
+            opacity: 1;
+        }
+        .divider {
+            color: #e2e8f0;
+            margin: 0 12px;
+        }
+    </style>
+</head>
+<body class="landing-page">
+
+    <div class="hero-section">
+        <div class="glass-card">
+            
+            <div style="font-size: 3rem; margin-bottom: 10px;">🌊</div>
+
+            <h1 class="hero-title">StockTalk!</h1>
+            <p class="hero-subtitle">가장 맑은 한국 주식 커뮤니티</p>
+
+            <div style="margin: 40px 0;">
+                <a href="main.html" class="btn btn-primary start-btn-large">
+                    커뮤니티 시작하기! <i class="fas fa-chart-line" style="margin-left: 8px;"></i>
+                </a>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.05); margin-bottom: 25px;">
+
+            <div class="landing-footer-links">
+                <a href="auth.html"><i class="fas fa-sign-in-alt"></i> 로그인</a>
+                
+                <span class="divider">|</span>
+                
+                <a href="po.html"><i class="fas fa-file-alt"></i> 이용약관</a>
+                
+                <span class="divider">|</span>
+                
+                <a href="#" onclick="confirmDelete()" class="delete-link">
+                    <i class="fas fa-user-minus"></i> 계정 삭제
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script-api.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockTalk Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        // 비정상 접근 원천 차단 (로그인 및 약관 동의 확인)
+        (function() {
+            if (!sessionStorage.getItem('policy_agreed')) {
+                location.href = 'po.html?from=main.html';
+            } else if (!sessionStorage.getItem('isLoggedIn')) {
+                alert("로그인이 필요한 서비스입니다.");
+                location.href = 'auth.html';
+            }
+        })();
+    </script>
+
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <a href="index.html" style="text-decoration:none"><h1>🌊 StockTalk</h1></a>
+            <div class="search-bar">
+                <input type="text" id="mainSearchInput" placeholder="종목 검색 (미국 주식)">
+                <button id="mainSearchBtn">조회</button>
+            </div>
+            <div id="authMenu">
+                <button id="loginBtn">로그인</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        
+        <section id="feed-section" class="glass-card">
+            <h2 style="margin-bottom:20px; color:var(--primary-blue);">
+                <i class="fas fa-rss"></i> Google 검색
+            </h2>
+            <div class="gcse-search"></div>
+            
+            <div id="news-status" style="margin-top: 20px;">
+                <p class="empty-msg">검색어를 입력하여 관련 시장 리포트를 확인하세요.</p>
+            </div>
+        </section>
+
+        <aside id="main-content-right">
+            
+            <div class="glass-card chart-box-large">
+                <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="color:var(--primary-blue);"><i class="fas fa-chart-line"></i> 실시간 분석 차트</h2>
+                    <button onclick="location.href='write.html'" class="write-btn">
+                        <i class="fas fa-pen-nib"></i> 인사이트 공유
+                    </button>
+                </div>
+                <div id="tradingview_chart"></div>
+            </div>
+
+            <div class="board-preview-grid">
+                
+                <div class="glass-card preview-box">
+                    <h3 style="color:var(--error);"><i class="fas fa-fire"></i> 주간 추천 게시글</h3>
+                    <ul id="latest-list">
+                        <li class="empty-msg">게시글을 불러오는 중입니다...</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card preview-box">
+                    <h3 style="color:var(--fresh-mint);"><i class="fas fa-trophy"></i> 이달의 베스트 인사이트</h3>
+                    <div id="best-post-content">
+                        <p class="empty-msg">데이터가 없습니다.</p>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+    </main>
+
+    <script src="script-api.js"></script>
+
+</body>
+</html>

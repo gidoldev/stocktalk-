@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockTalk | 보안 접속</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        body { 
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .auth-container { max-width: 420px; padding: 40px; border: 1px solid rgba(255,255,255,0.7); }
+        .auth-header { text-align: center; margin-bottom: 25px; }
+        .auth-header i { font-size: 2.5rem; color: var(--ocean-blue); margin-bottom: 10px; }
+        .security-info {
+            background: #f1f5f9; padding: 12px; border-radius: 10px;
+            font-size: 0.8rem; color: #64748b; margin-bottom: 20px; text-align: center;
+        }
+        .input-group { position: relative; margin-bottom: 15px; }
+        .input-group i { position: absolute; left: 15px; top: 18px; color: #94a3b8; }
+        .input-group input { padding-left: 45px !important; height: 50px; width: 100%; border: 1px solid #e2e8f0; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-header">
+            <i class="fas fa-shield-halved"></i>
+            <h2>회원가입 및 로그인</h2>
+            <p>ED 99 98 EC 98 81 ED 95 A9 EB 8B 88 EB 8B A4!</p>
+        </div>
+
+        <div class="security-info">
+            <i class="fas fa-lock-open"></i> 모든 비밀번호는 암호화되어 안전하게 처리됩니다.
+        </div>
+
+        <div class="auth-tabs">
+            <button class="tab-btn active" onclick="switchTab('login')">로그인</button>
+            <button class="tab-btn" onclick="switchTab('signup')">회원가입</button>
+        </div>
+
+        <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="login-id" placeholder="아이디" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-key"></i>
+                <input type="password" id="login-pw" placeholder="비밀번호" required>
+            </div>
+            <button type="submit" class="submit-btn">로그인</button>
+            <div id="login-msg" style="text-align:center; margin-top:10px;"></div>
+        </form>
+
+        <form id="signup-form" class="auth-form" onsubmit="handleSignup(event)">
+            <div class="input-group">
+                <i class="fas fa-user-plus"></i>
+                <input type="text" id="signup-id" placeholder="희망 아이디" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="signup-pw" placeholder="비밀번호 설정" required>
+            </div>
+            <button type="submit" class="submit-btn">회원가입</button>
+            <div id="signup-msg" style="text-align:center; margin-top:10px;"></div>
+        </form>
+    </div>
+
+   <script src="script-api.js"></script>
+    <script>
+        function switchTab(t) {
+            document.querySelectorAll('.tab-btn, .auth-form').forEach(el => el.classList.remove('active'));
+            if(t==='login'){
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('login-form').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('signup-form').classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
