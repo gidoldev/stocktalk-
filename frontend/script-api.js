@@ -7,8 +7,26 @@
    - 모든 요청을 API로 변경
 ============================================================ */
 
-// API 기본 URL (환경 변수로 관리)
-const API_URL = process.env.API_URL || 'https://api.stocktalk.com';
+// API 기본 URL (브라우저/Node 환경 모두 대응)
+const API_URL = (() => {
+    // 1) HTML에서 window.API_URL을 미리 지정한 경우
+    if (typeof window !== 'undefined' && window.API_URL) {
+        return window.API_URL;
+    }
+
+    // 2) Node 번들러 환경(process.env) 대응
+    if (typeof process !== 'undefined' && process?.env?.API_URL) {
+        return process.env.API_URL;
+    }
+
+    // 3) 로컬 개발 환경 자동 감지
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+        return 'http://localhost:5000';
+    }
+
+    // 4) 기본 프로덕션 API
+    return 'https://api.stocktalk.com';
+})();
 
 // ============================================================
 // [1] API 요청 헬퍼 함수
@@ -337,13 +355,6 @@ function updateHeaderUI() {
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // API URL 설정 (환경 변수나 수동 설정)
-    if (window.location.hostname === 'localhost') {
-        window.API_URL = 'http://localhost:5000';
-    } else {
-        window.API_URL = 'https://api.stocktalk.com'; // 프로덕션 API
-    }
-
     updateHeaderUI();
     updateBoardPreview();
     initTradingViewChart();
